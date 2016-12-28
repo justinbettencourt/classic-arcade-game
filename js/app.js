@@ -1,13 +1,3 @@
-/* 
-CUSTOM ACTIONS TO ADD:
-1) Collect Gems and bring to special tiles
-    - Place Gems on board
-    - Collide into Gems, show them being carried with player
-    - When player drops off gem, place gem on special tile
-2) Win Screen
-3) Title Screen
-*/
-
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -52,7 +42,7 @@ var Player = function(x, y) {
 };
 
 Player.prototype.update = function(dt) {
-    // This is a for loop to allow the collision detection to work with all the enemies in the game. It searches through the array.
+    // This is a for loop found on the forums that helped me allow the collision detection to work with all the enemies in the array.
     for (i=0; i < allEnemies.length; i++) {
         if (player.x < allEnemies[i].x + 60 && player.x + 60 > allEnemies[i].x && player.y < allEnemies[i].y + 60 && 60 + player.y > allEnemies[i].y) {
             player = new Player(200, 380);
@@ -71,27 +61,21 @@ Player.prototype.render = function(left, top, right, bottom) {
 
 Player.prototype.handleInput = function(input){
     if (input == 'left' && this.x !== 0) {
-        // console.log("Moving Left");
         this.x -= 100;
     }
 
     if (input == 'right' && this.x !== 400) {
-        // console.log("Moving Right")
         this.x += 100;
     }
 
     if (input == 'up' && this.y !== -35) {
-        // console.log("Moving Up");
         this.y -= 83;
     }
 
     if (input == 'down' && this.y !== 380) {
-        // console.log("Moving Down");
         this.y += 83;
     }
 };
-
-
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -104,7 +88,6 @@ var enemy5 = new Enemy(-400, 210, 400);
 var allEnemies = [enemy1, enemy2, enemy3, enemy4, enemy5];
 
 var player = new Player(200, 380);
-
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {

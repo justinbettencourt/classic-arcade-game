@@ -9,6 +9,9 @@ Control the charcater by using the arrow keys on your keyboard. Avoid the incomi
 
 ##Controls
 Up Arrow - Move Up
+
 Down Arrow - Move Down
+
 Left Arrow - Move Left
+
 Right Arrow - Move Right

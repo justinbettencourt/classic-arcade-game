@@ -1,3 +1,6 @@
+var TILE_WIDTH = 101;
+var TILE_HEIGHT = 83;
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -44,14 +47,16 @@ var Player = function(x, y) {
 Player.prototype.update = function(dt) {
     // This is a for loop found on the forums that helped me allow the collision detection to work with all the enemies in the array.
     for (i=0; i < allEnemies.length; i++) {
-        if (player.x < allEnemies[i].x + 60 && player.x + 60 > allEnemies[i].x && player.y < allEnemies[i].y + 60 && 60 + player.y > allEnemies[i].y) {
-            player = new Player(200, 380);
+        if (this.x < allEnemies[i].x + 60 && this.x + 60 > allEnemies[i].x && this.y < allEnemies[i].y + 60 && 60 + this.y > allEnemies[i].y) {
+            this.y = 380;
+            this.x = 200;
         }
     }
 
     // If the player reaches the water, restart the player by creating a new player.
     if (this.y == -35) {
-        player = new Player(200, 380);
+        this.y = 380;
+        this.x = 200;
     }
 };
 
@@ -61,19 +66,19 @@ Player.prototype.render = function(left, top, right, bottom) {
 
 Player.prototype.handleInput = function(input){
     if (input == 'left' && this.x !== 0) {
-        this.x -= 100;
+        this.x -= TILE_WIDTH;
     }
 
     if (input == 'right' && this.x !== 400) {
-        this.x += 100;
+        this.x += TILE_WIDTH;
     }
 
     if (input == 'up' && this.y !== -35) {
-        this.y -= 83;
+        this.y -= TILE_HEIGHT;
     }
 
     if (input == 'down' && this.y !== 380) {
-        this.y += 83;
+        this.y += TILE_HEIGHT;
     }
 };
 

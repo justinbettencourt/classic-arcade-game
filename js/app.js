@@ -65,19 +65,19 @@ Player.prototype.render = function(left, top, right, bottom) {
 };
 
 Player.prototype.handleInput = function(input){
-    if (input == 'left' && this.x !== 0) {
+    if (input == 'left' && this.x > 0) {
         this.x -= TILE_WIDTH;
     }
 
-    if (input == 'right' && this.x !== 400) {
+    if (input == 'right' && this.x < 400) {
         this.x += TILE_WIDTH;
     }
 
-    if (input == 'up' && this.y !== -35) {
+    if (input == 'up' && this.y > -35) {
         this.y -= TILE_HEIGHT;
     }
 
-    if (input == 'down' && this.y !== 380) {
+    if (input == 'down' && this.y < 380) {
         this.y += TILE_HEIGHT;
     }
 };
